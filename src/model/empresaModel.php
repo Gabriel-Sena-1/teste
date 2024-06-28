@@ -5,14 +5,12 @@
 // - nome
 
 class Empresa{
-    public $id;
     public $nome;
 
     function listarEmpresa(){
         $conn = conecta();
 
         try{
-        $conn = Database::conecta();
         $stmt = $conn->prepare('SELECT * FROM tbl_empresa');
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
