@@ -1,10 +1,11 @@
 <?php
 
-require './../model/contaModel.php';
+require_once __DIR__ . '/../model/contaModel.php';
+echo 'entrou';
 
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
-
+    echo $action;
     switch ($action) {
         case 'apagar':
             if (!empty($_GET['id'])) {
@@ -42,11 +43,13 @@ if (!empty($_GET['action'])) {
             break;
 
         case 'cadastrar':
-            if (!empty($_POST['valor']) && !empty($_POST['data_pagar']) && isset($_POST['pago']) && !empty($_POST['id_empresa'])) {
-                $valor = $_POST['valor'];
-                $data_pagar = $_POST['data_pagar'];
-                $pago = $_POST['pago'];
-                $id_empresa = $_POST['id_empresa'];
+            echo 'entrou';
+            if (!empty($_GET['valor']) && !empty($_GET['data_pagamento']) && !empty($_GET['empresa'])) {
+                echo 'entrou';
+                $valor = $_GET['valor'];
+                $data_pagar = $_GET['data_pagamento'];
+                $pago = 0;
+                $id_empresa = $_GET['empresa'];
 
                 $cadastraConta = cadastraConta($valor, $data_pagar, $pago, $id_empresa);
 
@@ -55,7 +58,7 @@ if (!empty($_GET['action'])) {
                 } else {
                     $msg = "Erro ao cadastrar a conta.";
                 }
-                header("Location: ./../view/pages/home.php?msg=$msg");
+                header("Location: ./../view/pages/adicionarConta.php?msg=$msg");
                 exit();
             }
             break;

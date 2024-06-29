@@ -6,14 +6,13 @@
 // - data_pagar DATE
 // - pago TINYINT
 // - id_empresa
+require_once __DIR__.'./../util/conectaPDO.php';
 
 class Conta{
     public $valor;
     public $data_pagar;
     public $pago;
     public $id_empresa;
-    
-    
 }
 function listarContas(){
     $conn = conecta();

@@ -1,6 +1,6 @@
 <?php
 
-require_once './conectaPDO.php';
+require_once __DIR__ . '/conectaPDO.php';
 
 function createDB()
 {
@@ -21,8 +21,7 @@ $criarDB = createDB();
 
 if($criarDB){
     echo 'Banco criado com sucesso!';
-    header('./../view/pages/home.php&setdb=1');
+    header('Location: ./../pages/home.php?setdb=1');
 }else{
-    echo 'Banco já existente.';
     header('./../view/pages/home.php');
 }
