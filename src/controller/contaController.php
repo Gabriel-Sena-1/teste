@@ -8,16 +8,17 @@ if (!empty($_GET['action'])) {
     echo $action;
     switch ($action) {
         case 'apagar':
-            if (!empty($_GET['id'])) {
-                $id_conta_pagar = $_GET['id'];
-                $apagarConta = deletaConta($id_conta_pagar);
+            if (!empty($_GET['id_conta'])) {
+                $id_conta_pagar = $_GET['id_conta'];
+                $id_empresa = $_GET['id_empresa'];
+                $apagarConta = deletaConta($id_conta_pagar, $id_empresa);
 
                 if ($apagarConta) {
                     $msg = "Conta deletada com sucesso!!";
                 } else {
                     $msg = "Erro ao deletar a conta.";
                 }
-                header("Location: ./../view/pages/home.php?msg=$msg");
+                header("Location: ./../view/pages/adicionarConta.php?msg=$msg");
                 exit();
             }
             break;
@@ -65,7 +66,7 @@ if (!empty($_GET['action'])) {
 
         default:
             $msg = "Ação inválida.";
-            header("Location: ./../view/pages/home.php?msg=$msg");
+            header("Location: ./../view/pages/adicionarConta.php?msg=$msg");
             exit();
     }
 }

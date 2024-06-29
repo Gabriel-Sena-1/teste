@@ -86,14 +86,15 @@ function atualizaConta($id_conta_pagar, $valor, $data_pagar, $pago, $id_empresa)
     }
 }
 
-function deletaConta($id_conta_pagar) {
+function deletaConta($id_conta_pagar, $id_empresa) {
     $conn = conecta();
     try {
         $conn->beginTransaction();
 
-        $sql = "DELETE FROM tbl_conta_pagar WHERE id_conta_pagar = :id_conta_pagar";
+        $sql = "DELETE FROM tbl_conta_pagar WHERE id_conta_pagar = :id_conta_pagar AND id_empresa = :id_empresa";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':id_conta_pagar', $id_conta_pagar, PDO::PARAM_INT);
+        $stmt->bindValue(':id_empresa', $id_empresa, PDO::PARAM_INT);
         $stmt->execute();
         
         $conn->commit();
