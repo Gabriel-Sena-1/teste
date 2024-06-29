@@ -1,3 +1,3 @@
 <?php
 
-header('Location: ./src/view/pages/home.php');
+header('Location: ./src/view/pages/adicionarConta.php');

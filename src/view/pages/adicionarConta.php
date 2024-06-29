@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -82,21 +83,50 @@
             font-size: 1rem;
             background-color: #fff;
         }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        td a {
+            text-decoration: none;
+            color: #007bff;
+            margin-right: 10px;
+        }
+        td a:hover {
+            text-decoration: underline;
+        }
     </style>
     <?php
-    require_once './../../model/empresaModel.php';
+    require_once __DIR__.'./../../controller/empresaController.php';
+    require_once __DIR__.'./../../model/empresaModel.php';
     $empresas = listarEmpresa();
 
     if (isset($_GET['msg'])) {
         echo '<script>alert("' . htmlspecialchars($_GET['msg']) . '");</script>';
     }
-    
+
     ?>
 </head>
 
 <body>
     <header>
-
     </header>
 
     <main>
@@ -119,7 +149,11 @@
             </form>
         </div>
 
-        
+        <div style="margin: 40px;">
+        <?php
+            tableEmpresasContas();
+        ?>
+        </div>
     </main>
 
     <footer>
