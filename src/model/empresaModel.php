@@ -1,7 +1,7 @@
 <?php
 
 // Tabela de tbl_empresa, 
-// - id_empresa
+// - id_empresa -> automaticamente preenchido no banco de dados
 // - nome
 
 class Empresa{

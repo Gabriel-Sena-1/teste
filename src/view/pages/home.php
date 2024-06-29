@@ -1,6 +1,11 @@
 <?php
     require './../../controller/contaController.php';
     require './../../controller/empresaController.php';
+
+    if(!isset($_GET['setdb']) && $_GET['setdb'] != 1){
+        header('./../../util/createDB.php');
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -28,8 +33,8 @@
                 </tr>
             </thead>
             <tbody>
-                <?php listarContas(); ?>
-            </tbody>
+<!-- LISTAR CONTAS VEM AQUI -->
+        </tbody>
         </table>
         
     </main>

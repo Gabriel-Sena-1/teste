@@ -1,7 +1,7 @@
 <?php
 
 // Tabela de tbl_conta_pagar
-// - id_conta_pagar
+// - id_conta_pagar -> automaticamente inserido no banco de dados
 // - valor DECIMAL(10,2)
 // - data_pagar DATE
 // - pago TINYINT
