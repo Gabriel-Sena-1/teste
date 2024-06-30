@@ -253,9 +253,9 @@
                 <input name="action" id="action" hidden value="editar">
                 <input type="number" name="id_conta_pagar" id="id_conta_pagar" value="" hidden>
                 <label for="date" style="margin-bottom: 10px;">Nova Data:</label>
-                <input type="date" name="data_pagar" id="data_pagar" style="padding: 8px; margin-bottom: 10px;">
+                <input type="date" name="data_pagar" id="data_pagar" style="padding: 8px; margin-bottom: 10px;" required>
                 <label for="valor" style="margin-bottom: 10px;">Novo valor:</label>
-                <input type="number" name="valor" id="valor" placeholder="Novo valor a pagar" style="padding: 8px; margin-bottom: 20px;">
+                <input type="number" name="valor" id="valor" placeholder="Novo valor a pagar" style="padding: 8px; margin-bottom: 20px;" required>
                 <button type="submit" onclick="return confirm('Tem certeza que deseja editar esta conta?')" style="padding: 10px; background-color: #007bff; color: #ffffff; border: none; cursor: pointer;">Editar conta</button>
             </form>
         </div>

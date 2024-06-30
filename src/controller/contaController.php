@@ -44,8 +44,8 @@ if (!empty($_GET['action'])) {
 
         case 'atualizaStatus':
             $id_conta_pagar = $_GET['id_conta_pagar'];
-
-            $atualizaConta = atualizaStatusConta($id_conta_pagar);
+            $valor = $_GET['valor'];
+            $atualizaConta = atualizaStatusConta($id_conta_pagar, $valor);
 
             if ($atualizaConta) {
                 $msg = "Conta paga com sucesso!!";

@@ -84,16 +84,17 @@ function atualizaConta($id_conta_pagar, $valor, $data_pagar) {
     }
 }
 
-function atualizaStatusConta($id_conta_pagar) {
+function atualizaStatusConta($id_conta_pagar, $valor) {
     $conn = conecta();
     try {
         $conn->beginTransaction();
 
         $sql = "UPDATE tbl_conta_pagar
-                SET pago = :pago
+                SET pago = :pago, valor = :valor
                 WHERE id_conta_pagar = :id_conta_pagar";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':pago', 1);
+        $stmt->bindValue(':valor', $valor);
         $stmt->bindValue(':id_conta_pagar', $id_conta_pagar, PDO::PARAM_INT);
         $stmt->execute();
         
