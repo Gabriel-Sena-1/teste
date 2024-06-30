@@ -1,51 +1,48 @@
-# Projeto de Controle Financeiro de Contas a Pagar
+# Controle Financeiro de Contas a Pagar - Teste para Vaga de Estágio
 
-Oi! Eu sou o Gabriel Sena, tenho 19 anos, e estou muito animado em compartilhar com vocês minha resolução do teste PHP da empresa. Vamos dar uma olhada no que fiz? 😊
+E aí, avaliador! 👋 Bem-vindo ao meu projeto de controle financeiro de contas a pagar. Neste teste, vou guiar você rapidamente sobre como configurar o ambiente para testar o sistema.
 
-## 📋 Estrutura do Banco de Dados
+## Pré-requisitos
 
-Conforme solicitado, criei duas tabelas principais no MySQL para gerenciar as empresas e suas respectivas contas a pagar.
+Antes de começarmos, verifique se você tem o seguinte:
 
-### Tabela `tbl_empresa`
-- `id_empresa` (INT, AUTO_INCREMENT, PRIMARY KEY)
-- `nome` (VARCHAR(255), NOT NULL)
+- XAMPP ou algum servidor local com MySQL/MariaDB configurado.
+- Um navegador web (recomendo Chrome ou Firefox).
 
-### Tabela `tbl_conta_pagar`
-- `id_conta_pagar` (INT, AUTO_INCREMENT, PRIMARY KEY)
-- `valor` (DECIMAL(10,2), NOT NULL)
-- `data_pagar` (DATE, NOT NULL)
-- `pago` (TINYINT, NOT NULL)
-- `id_empresa` (INT, FOREIGN KEY REFERENCES `tbl_empresa(id_empresa)`)
+## Passos para Configuração
 
-## 🌐 Frontend em HTML & PHP
+1. **Clone o Repositório:**
 
-Então implementei uma página com campos para adicionar e editar contas a pagar, além de uma tabela para listar todas as contas. Também inclui filtros para facilitar a busca e visualização das contas.
+   Clone este repositório para o seu ambiente local. Você pode fazer isso executando o seguinte comando no seu terminal:
 
-### Campos para Adicionar/Editar Conta
-1. **Empresa (Select)**: Lista todas as empresas cadastradas na tabela `tbl_empresa`.
-2. **Data de Pagamento (Input Date)**: Seleciona a data de pagamento.
-3. **Valor (Input)**: Insere o valor a ser pago.
+   ```bash
+   git clone https://github.com/seu-usuario/teste-php.git
 
-### Funcionalidades
-- **Inserir/Editar Conta**: Formulário para adicionar ou editar uma conta a pagar.
-- **Listar Contas**: Tabela HTML que lista todas as contas cadastradas com botões para excluir, editar e marcar como paga.
-- **Formatação de Valores**: Valores formatados no padrão brasileiro (EX: R$ 500,00).
-- **Filtros**: 
-  - Filtrar por nome da empresa.
-  - Filtrar por valor a pagar (maior, menor ou igual).
-  - Filtrar por data de pagamento.
+2. **Crie o Banco de Dados:**
 
-## ⚙️ Regras de Negócio
-- **Desconto de 5%**: Contas pagas antes da data de pagamento.
-- **Sem Desconto**: Contas pagas no dia do pagamento.
-- **Acréscimo de 10%**: Contas pagas após a data de pagamento.
+    Navegue até a pasta raiz do projeto teste-php.
 
-## 💬 Mensagens de Alerta
+    Abra seu navegador e digite http://localhost/phpmyadmin (ou o caminho correspondente ao seu servidor local).
 
-Adicionei mensagens de alerta para confirmar a exclusão de contas e informar o valor atualizado dependendo da data de pagamento.
+    Crie um banco de dados chamado teste-php.
 
-## 💡 Conclusão
+    Se precisar de ajuda para criar o banco de dados, não se preocupe! Apenas crie um banco de dados vazio com o nome teste-php.
 
-Espero que você goste do meu projeto! Foi uma ótima oportunidade para aplicar meus conhecimentos em PHP, JavaScript e MySQL, além de aprender novas técnicas. Estou animado para fazer parte da equipe e contribuir com mais projetos legais!
+3. **Inicie o Sistema:**
+
+    Agora, vá para o diretório teste-php que você clonou.
+    Certifique-se de que seu servidor local (XAMPP, por exemplo) está rodando.
+    Abra o navegador e digite http://localhost/teste-php
+    O sistema vai verificar se o banco de dados está criado (teste-php). Se não estiver, ele vai criá-lo automaticamente para você.
+
+
+    Explore o Sistema:
+    Após seguir os passos acima, você será redirecionado para a página de controle de contas a pagar.
+    Aqui você pode adicionar novas contas, editar existentes, marcar como pagas e até mesmo filtrar por nome da empresa.
+    Dúvidas?
+    
+Se tiver alguma dúvida ou problema durante a configuração, fique à vontade para me contatar via email: gabrielmirandasena11@email.com. Estou à disposição para ajudar!
+
+Divirta-se explorando o sistema e obrigado pela oportunidade de participar deste processo seletivo!
 
 **Gabriel Sena**
