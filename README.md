@@ -21,7 +21,9 @@ Antes de começarmos, verifique se você tem o seguinte:
 2. **Crie o Banco de Dados:**
 
     Navegue até a pasta raiz do projeto teste-php.
-
+    ```bash
+    cd teste-php
+    
     Abra seu navegador e digite http://localhost/phpmyadmin (ou o caminho correspondente ao seu servidor local).
 
     Crie um banco de dados chamado teste-php.
