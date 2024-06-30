@@ -61,19 +61,17 @@ function cadastraConta($valor, $data_pagar, $pago, $id_empresa){
     }
 }
 
-function atualizaConta($id_conta_pagar, $valor, $data_pagar, $pago, $id_empresa) {
+function atualizaConta($id_conta_pagar, $valor, $data_pagar) {
     $conn = conecta();
     try {
         $conn->beginTransaction();
 
         $sql = "UPDATE tbl_conta_pagar
-                SET valor = :valor, data_pagar = :data_pagar, pago = :pago, id_empresa = :id_empresa
+                SET valor = :valor, data_pagar = :data_pagar
                 WHERE id_conta_pagar = :id_conta_pagar";
         $stmt = $conn->prepare($sql);
         $stmt->bindValue(':valor', $valor);
         $stmt->bindValue(':data_pagar', $data_pagar, PDO::PARAM_STR);
-        $stmt->bindValue(':pago', $pago, PDO::PARAM_BOOL);
-        $stmt->bindValue(':id_empresa', $id_empresa, PDO::PARAM_INT);
         $stmt->bindValue(':id_conta_pagar', $id_conta_pagar, PDO::PARAM_INT);
         $stmt->execute();
         

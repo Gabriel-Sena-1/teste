@@ -6,11 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Contas</title>
     <link rel="stylesheet" href="./../css/style.css">
-    <script></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filtroEmpresaInput = document.querySelector('#divFiltro input[type="text"]');
+            const tabelasEmpresas = document.querySelectorAll('.tabelaEmpresas');
+
+            filtroEmpresaInput.addEventListener('input', function() {
+                const textoFiltro = this.value.trim().toLowerCase();
+
+                tabelasEmpresas.forEach(tabela => {
+                    const nomeEmpresa = tabela.getAttribute('data-nome').toLowerCase();
+
+                    if (nomeEmpresa.includes(textoFiltro)) {
+                        tabela.style.display = ''; // Mostra a tabela se o nome corresponder ao filtro
+                    } else {
+                        tabela.style.display = 'none'; // Oculta a tabela se o nome não corresponder ao filtro
+                    }
+                });
+            });
+        });
+
+        function editarConta(idConta) {
+            var popEditar = document.getElementById('popEditar');
+            var idEditar = document.getElementById('id_conta_pagar');
+            popEditar.style.display = 'flex';
+            popEditar.style.flexDirection = 'column';
+            popEditar.style.position = 'fixed';
+            popEditar.style.top = '50%';
+            popEditar.style.left = '50%';
+            popEditar.style.transform = 'translate(-50%, -50%)';
+            popEditar.style.zIndex = '1000';
+            popEditar.style.backgroundColor = '#ffffff';
+            popEditar.style.padding = '20px';
+            popEditar.style.boxShadow = '0 0 20px rgba(0, 0, 0, 0.2)';
+            popEditar.style.borderRadius = '5px';
+            idEditar.value = idConta;
+        }
+    </script>
     <style>
-        body{
+        body {
             margin: 0;
         }
+
         /* Estilo para o contêiner do formulário */
         .form-container {
             max-width: 400px;
@@ -150,6 +187,26 @@
         header button:hover {
             background-color: #45a049;
         }
+
+        #divPaiFiltro {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        #divFiltro {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        #divFiltro input[type="text"] {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+        }
     </style>
     <?php
     require_once __DIR__ . './../../controller/empresaController.php';
@@ -188,6 +245,26 @@
                 <input type="number" name="valor" id="valor_pagar" placeholder="Valor a pagar">
                 <button type="submit">Cadastrar conta</button>
             </form>
+        </div>
+
+        <div id="popEditar" style="z-index: 1000; display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #ffffff; width: 400px; padding: 80px; box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); border-radius: 5px;">
+            <form action="./../../controller/contaController.php" style="display: flex; flex-direction: column;">
+                <h1 style="text-align: center; margin-bottom: 20px;">Editar conta:</h1>
+                <input name="action" id="action" hidden value="editar">
+                <input type="number" name="id_conta_pagar" id="id_conta_pagar" value="" hidden>
+                <label for="date" style="margin-bottom: 10px;">Nova Data:</label>
+                <input type="date" name="data_pagar" id="data_pagar" style="padding: 8px; margin-bottom: 10px;">
+                <label for="valor" style="margin-bottom: 10px;">Novo valor:</label>
+                <input type="number" name="valor" id="valor" placeholder="Novo valor a pagar" style="padding: 8px; margin-bottom: 20px;">
+                <button type="submit" onclick="return confirm('Tem certeza que deseja editar esta conta?')" style="padding: 10px; background-color: #007bff; color: #ffffff; border: none; cursor: pointer;">Editar conta</button>
+            </form>
+        </div>
+
+
+        <div style="display: flex; flex-direction: column; margin-bottom: -50px; margin-top: 30px;" id="divPaiFiltro">
+            <div style="text-align: center;" id="divFiltro">
+                <p style="font-weight: 600;">PESQUISAR EMPRESA: <input type="text"></p>
+            </div>
         </div>
 
         <div style="margin: 40px;">

@@ -24,14 +24,12 @@ if (!empty($_GET['action'])) {
             break;
 
         case 'editar':
-            if (!empty($_GET['id_conta_pagar']) && !empty($_GET['valor']) && !empty($_GET['data_pagar']) && isset($_GET['pago']) && !empty($_GET['id_empresa'])) {
+            if (!empty($_GET['id_conta_pagar']) && !empty($_GET['valor']) && !empty($_GET['data_pagar'])) {
                 $id_conta_pagar = $_GET['id_conta_pagar'];
                 $valor = $_GET['valor'];
                 $data_pagar = $_GET['data_pagar'];
-                $pago = $_GET['pago'];
-                $id_empresa = $_GET['id_empresa'];
-
-                $atualizaConta = atualizaConta($id_conta_pagar, $valor, $data_pagar, $pago, $id_empresa);
+                echo 'entrou';
+                $atualizaConta = atualizaConta($id_conta_pagar, $valor, $data_pagar);
 
                 if ($atualizaConta) {
                     $msg = "Conta atualizada com sucesso!!";
