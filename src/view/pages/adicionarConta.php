@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Contas</title>
+    <link rel="icon" href="./../img/favicon-32x32.png" type="image/x-icon">
     <link rel="stylesheet" href="./../css/style.css">
     <script>
         document.addEventListener('DOMContentLoaded', function() {

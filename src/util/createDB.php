@@ -16,12 +16,3 @@ function createDB()
         return false;
     }
 }
-
-$criarDB = createDB();
-
-if($criarDB){
-    echo 'Banco criado com sucesso!';
-    header('Location: ./../pages/home.php?setdb=1');
-}else{
-    header('./../view/pages/home.php');
-}

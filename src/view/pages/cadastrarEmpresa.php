@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar empresa</title>
+    <link rel="icon" href="./../img/favicon-32x32.png" type="image/x-icon">
     <?php
     if (isset($_GET['msg'])) {
         echo '<script>alert("' . htmlspecialchars($_GET['msg']) . '");</script>';
