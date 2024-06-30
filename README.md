@@ -13,22 +13,19 @@ Antes de começarmos, verifique se você tem o seguinte:
 
 1. **Clone o Repositório:**
 
-   Clone este repositório para o seu ambiente local. Você pode fazer isso executando o seguinte comando no seu terminal:
+   Clone este repositório para o seu ambiente local e navegue até a pasta raiz do projeto teste-php. Você pode fazer isso executando o seguinte comando no seu terminal:
 
    ```bash
    git clone https://github.com/seu-usuario/teste-php.git
 
+   cd teste-php
 2. **Crie o Banco de Dados:**
 
-    Navegue até a pasta raiz do projeto teste-php.
-    ```bash
-    cd teste-php
-    
     Abra seu navegador e digite http://localhost/phpmyadmin (ou o caminho correspondente ao seu servidor local).
 
     Crie um banco de dados chamado teste-php.
 
-    Se precisar de ajuda para criar o banco de dados, não se preocupe! Apenas crie um banco de dados vazio com o nome teste-php.
+    Não se preocupe com estruturar o banco! Apenas crie um banco de dados vazio com o nome teste-php.
 
 3. **Inicie o Sistema:**
 
