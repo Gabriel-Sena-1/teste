@@ -23,13 +23,13 @@ if (!empty($_GET['action'])) {
             }
             break;
 
-        case 'atualizar':
-            if (!empty($_POST['id_conta_pagar']) && !empty($_POST['valor']) && !empty($_POST['data_pagar']) && isset($_POST['pago']) && !empty($_POST['id_empresa'])) {
-                $id_conta_pagar = $_POST['id_conta_pagar'];
-                $valor = $_POST['valor'];
-                $data_pagar = $_POST['data_pagar'];
-                $pago = $_POST['pago'];
-                $id_empresa = $_POST['id_empresa'];
+        case 'editar':
+            if (!empty($_GET['id_conta_pagar']) && !empty($_GET['valor']) && !empty($_GET['data_pagar']) && isset($_GET['pago']) && !empty($_GET['id_empresa'])) {
+                $id_conta_pagar = $_GET['id_conta_pagar'];
+                $valor = $_GET['valor'];
+                $data_pagar = $_GET['data_pagar'];
+                $pago = $_GET['pago'];
+                $id_empresa = $_GET['id_empresa'];
 
                 $atualizaConta = atualizaConta($id_conta_pagar, $valor, $data_pagar, $pago, $id_empresa);
 
@@ -38,9 +38,24 @@ if (!empty($_GET['action'])) {
                 } else {
                     $msg = "Erro ao atualizar a conta.";
                 }
-                header("Location: ./../view/pages/home.php?msg=$msg");
+                header("Location: ./../view/pages/adicionarConta.php?msg=$msg");
                 exit();
             }
+            break;
+
+
+        case 'atualizaStatus':
+            $id_conta_pagar = $_GET['id_conta_pagar'];
+
+            $atualizaConta = atualizaStatusConta($id_conta_pagar);
+
+            if ($atualizaConta) {
+                $msg = "Conta paga com sucesso!!";
+            } else {
+                $msg = "Erro ao pagar a conta.";
+            }
+            header("Location: ./../view/pages/adicionarConta.php?msg=$msg");
+            exit();
             break;
 
         case 'cadastrar':
@@ -68,19 +83,5 @@ if (!empty($_GET['action'])) {
             $msg = "Ação inválida.";
             header("Location: ./../view/pages/adicionarConta.php?msg=$msg");
             exit();
-    }
-}
-
-function tableContas(){
-    $listaContas = listarContas();
-    $table = '';
-    foreach ($listaContas as $conta) {
-        $table .= '<tr>
-        <td>'.$conta['valor'].'</td>
-        <td>'.$conta['data_pagar'].'</td>
-        <td>'.$conta['pago'].'</td>
-        <td>'.$conta['id_empresa'].'</td>
-        </tr>
-        ';
     }
 }

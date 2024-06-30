@@ -86,6 +86,28 @@ function atualizaConta($id_conta_pagar, $valor, $data_pagar, $pago, $id_empresa)
     }
 }
 
+function atualizaStatusConta($id_conta_pagar) {
+    $conn = conecta();
+    try {
+        $conn->beginTransaction();
+
+        $sql = "UPDATE tbl_conta_pagar
+                SET pago = :pago
+                WHERE id_conta_pagar = :id_conta_pagar";
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(':pago', 1);
+        $stmt->bindValue(':id_conta_pagar', $id_conta_pagar, PDO::PARAM_INT);
+        $stmt->execute();
+        
+        $conn->commit();
+        return true;
+    } catch (PDOException $e) {
+        $conn->rollBack();
+        echo $e->getMessage();
+        return false;
+    }
+}
+
 function deletaConta($id_conta_pagar, $id_empresa) {
     $conn = conecta();
     try {

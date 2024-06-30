@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="./../css/style.css">
     <script></script>
     <style>
+        body{
+            margin: 0;
+        }
         /* Estilo para o contêiner do formulário */
         .form-container {
             max-width: 400px;
@@ -89,33 +92,68 @@
             border-collapse: collapse;
             margin-bottom: 20px;
             background-color: #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
         }
-        th, td {
+
+        th,
+        td {
             border: 1px solid #ddd;
             padding: 10px;
             text-align: left;
         }
+
         th {
             background-color: #f2f2f2;
             font-weight: bold;
         }
+
         tr:nth-child(even) {
             background-color: #f9f9f9;
         }
+
         td a {
             text-decoration: none;
             color: #007bff;
             margin-right: 10px;
         }
+
         td a:hover {
             text-decoration: underline;
         }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        header a {
+            text-decoration: none;
+        }
+
+        header button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        header button:hover {
+            background-color: #45a049;
+        }
     </style>
     <?php
-    require_once __DIR__.'./../../controller/empresaController.php';
-    require_once __DIR__.'./../../model/empresaModel.php';
+    require_once __DIR__ . './../../controller/empresaController.php';
+    require_once __DIR__ . './../../model/empresaModel.php';
     $empresas = listarEmpresa();
 
     if (isset($_GET['msg'])) {
@@ -126,7 +164,10 @@
 </head>
 
 <body>
-    <header>
+    <header style="margin-bottom: 30px;">
+        <a href="./cadastrarEmpresa.php">
+            <button type="button">Cadastro de empresas</button>
+        </a>
     </header>
 
     <main>
@@ -150,9 +191,9 @@
         </div>
 
         <div style="margin: 40px;">
-        <?php
+            <?php
             tableEmpresasContas();
-        ?>
+            ?>
         </div>
     </main>
 
