@@ -43,6 +43,26 @@
             popEditar.style.borderRadius = '5px';
             idEditar.value = idConta;
         }
+
+        function ordenarTabela(button) {
+            var tabela = button.closest('table');
+            var tbody = tabela.querySelector('tbody');
+            var rowsArray = Array.from(tbody.rows);
+            var order = button.getAttribute('data-order');
+
+            rowsArray.sort(function(a, b) {
+                var valorA = parseFloat(a.cells[1].innerText.replace('R$', '').replace('.', '').replace(',', '.'));
+                var valorB = parseFloat(b.cells[1].innerText.replace('R$', '').replace('.', '').replace(',', '.'));
+                return (order === 'desc') ? valorB - valorA : valorA - valorB;
+            });
+
+            rowsArray.forEach(function(row) {
+                tbody.appendChild(row);
+            });
+
+            // Alterna o estado de ordenação
+            button.setAttribute('data-order', order === 'desc' ? 'asc' : 'desc');
+        }
     </script>
     <style>
         body {

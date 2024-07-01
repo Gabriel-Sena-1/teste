@@ -50,11 +50,11 @@ function tableEmpresasContas()
             echo '<table class="tabelaEmpresas" style="width: 100%; border-collapse: collapse; margin-bottom: 20px; background-color: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1); border-radius: 5px;" data-nome="' . htmlspecialchars($empresa['nome']) . '">';
             echo '<thead>';
             echo '<tr>';
-            echo '<th colspan="6" style="background-color: #f2f2f2; text-align: center; padding: 10px; font-weight: bold;">' . htmlspecialchars($empresa['nome']) . '</th>'; // Nome da empresa
+            echo '<th colspan="7" style="background-color: #f2f2f2; text-align: center; padding: 10px; font-weight: bold;">' . htmlspecialchars($empresa['nome']) . '</th>'; // Nome da empresa
             echo '</tr>';
             echo '<tr>';
             echo '<th style="border: 1px solid #ddd; padding: 10px; text-align: center;">ID da Conta</th>';
-            echo '<th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Valor</th>'; // Adicionando o título para o valor da conta
+            echo '<th style="border: 1px solid #ddd; padding: 10px; text-align: center;"><button onclick="ordenarTabela(this)">Valor</button></th>'; // Adicionando o título para o valor da conta
             echo '<th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Data de Pagamento</th>'; // Nova coluna para data de pagamento
             echo '<th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Excluir</th>';
             echo '<th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Editar</th>';
@@ -71,7 +71,7 @@ function tableEmpresasContas()
                 echo '<td style="border: 1px solid #ddd; padding: 10px; text-align: center;"><a onclick="return confirm(\'Tem certeza que deseja apagar esta conta?\')" href="./../../controller/contaController.php?action=apagar&id_conta=' . $conta['id_conta_pagar'] . '&id_empresa=' . $empresa['id_empresa'] . '"><img src="./../img/delete.png" alt="Apagar conta" width="25px" style="display: block; margin: 0 auto;"></a></td>'; // Link para excluir (substitua "#" pela URL real)
                 echo '<td style="border: 1px solid #ddd; padding: 10px; text-align: center;"><a href="#" onclick="editarConta(' . $conta['id_conta_pagar'] . ')"><img src="./../img/edit.png" alt="Editar conta" width="25px" style="display: block; margin: 0 auto;"></a></td>'; // Link para editar (substitua "#" pela URL real)
                 if (!$conta['pago']) {
-                    echo '<td style="border: 1px solid #ddd; padding: 10px; text-align: center;"><a onclick="return confirm(\'Tem certeza que deseja mudar o status desta conta?\nO valor a ser pago será de R$' . comparaDataRetornaValor($conta['data_pagar'], $conta['valor']) . '.\')" href="./../../controller/contaController.php?action=atualizaStatus&id_conta_pagar=' . $conta['id_conta_pagar'] . '&valor='.comparaDataRetornaValor($conta['data_pagar'], $conta['valor']).'"><img src="./../img/waiting.png" alt="Marcar como paga" width="25px" style="display: block; margin: 0 auto;"></a></td>'; // Link para marcar como paga (substitua "#" pela URL real)
+                    echo '<td style="border: 1px solid #ddd; padding: 10px; text-align: center;"><a onclick="return confirm(\'Tem certeza que deseja mudar o status desta conta?\nO valor a ser pago será de R$' . comparaDataRetornaValor($conta['data_pagar'], $conta['valor']) . '.\')" href="./../../controller/contaController.php?action=atualizaStatus&id_conta_pagar=' . $conta['id_conta_pagar'] . '&valor=' . comparaDataRetornaValor($conta['data_pagar'], $conta['valor']) . '"><img src="./../img/waiting.png" alt="Marcar como paga" width="25px" style="display: block; margin: 0 auto;"></a></td>'; // Link para marcar como paga (substitua "#" pela URL real)
                 } else {
                     echo '<td style="border: 1px solid #ddd; padding: 10px; text-align: center;"><img src="./../img/check.png" alt="Marcar como paga" width="25px" style="display: block; margin: 0 auto;"></td>'; // Link para marcar como paga (substitua "#" pela URL real)
                 }

@@ -1,7 +1,6 @@
 <?php
 
 require_once __DIR__ . '/../model/contaModel.php';
-echo 'entrou';
 
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];

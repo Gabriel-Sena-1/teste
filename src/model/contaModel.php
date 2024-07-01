@@ -22,7 +22,7 @@ function listarContas(){
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $empresas = [];
+    $contas = [];
 
     foreach ($result as $conta) {
         $conta['id_conta_pagar'];
