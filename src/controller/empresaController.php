@@ -54,7 +54,7 @@ function tableEmpresasContas()
             echo '</tr>';
             echo '<tr>';
             echo '<th style="border: 1px solid #ddd; padding: 10px; text-align: center;">ID da Conta</th>';
-            echo '<th style="border: 1px solid #ddd; padding: 10px; text-align: center;"><button onclick="ordenarTabela(this)">Valor</button></th>'; // Adicionando o título para o valor da conta
+            echo '<th style="border: 1px solid #ddd; padding: 10px; text-align: center;"><p onclick="ordenarTabela(this)">Valor</p></th>'; // Adicionando o título para o valor da conta
             echo '<th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Data de Pagamento</th>'; // Nova coluna para data de pagamento
             echo '<th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Excluir</th>';
             echo '<th style="border: 1px solid #ddd; padding: 10px; text-align: center;">Editar</th>';
